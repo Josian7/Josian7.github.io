@@ -4,8 +4,26 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Hello World, Josian">
-    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex">
+    <meta name="keywords" content="Greenplum 数据库单机部署, Josian">
+    <meta name="description" content="Greenplum 单机安装环境安装环境：Centos7
+
+
+
+配置
+详情
+
+
+
+系统
+Linux.el7.x86_64
+
+
+内存
+&amp;gt;= 4G ；建议8G
+
+
+Greenplum安装包
+greenplum-db-6.19.2-rhel">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -19,7 +37,7 @@
 
     
 
-    <title>Hello World | Josian</title>
+    <title>Greenplum 数据库单机部署 | Josian</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -246,12 +264,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/5.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Hello World</h1>
+                    <h1 class="description center-align post-title">Greenplum 数据库单机部署</h1>
                 </div>
             </div>
         </div>
@@ -365,12 +383,33 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/database/">
+                                <span class="chip bg-color">database</span>
+                            </a>
+                        
+                            <a href="/tags/greenplum/">
+                                <span class="chip bg-color">greenplum</span>
+                            </a>
+                        
+                            <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                                <span class="chip bg-color">数据库</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/greenplum/" class="post-category">
+                                greenplum
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -379,7 +418,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-06-02
+                    2022-08-11
                 </div>
                 
 
@@ -388,14 +427,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    73
+                    1.2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    5 分
                 </div>
                 
 
@@ -415,19 +454,217 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class=" language-bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span>
+                <h2 id="Greenplum-单机安装"><a href="#Greenplum-单机安装" class="headerlink" title="Greenplum 单机安装"></a>Greenplum 单机安装</h2><h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p>安装环境：Centos7</p>
+<table>
+<thead>
+<tr>
+<th>配置</th>
+<th>详情</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>系统</td>
+<td>Linux.el7.x86_64</td>
+</tr>
+<tr>
+<td>内存</td>
+<td>&gt;= 4G ；建议8G</td>
+</tr>
+<tr>
+<td>Greenplum安装包</td>
+<td>greenplum-db-6.19.2-rhel7-x86_64.rpm</td>
+</tr>
+</tbody></table>
+<h2 id="下载安装包"><a href="#下载安装包" class="headerlink" title="下载安装包"></a>下载安装包</h2><p>安装包官网下载地址：<a target="_blank" rel="noopener" href="https://network.pivotal.io/products/vmware-tanzu-greenplum#/releases/449820/file_groups/2047">Download VMware Tanzu™ Greenplum®</a></p>
+<p>版本选择：</p>
+<div align=left>
+<img src="https://gitee.com/Josian/chart07/raw/master/gp-down_version-2022-8-1110:43:56.jpg" style="zoom:65%;" />
+</div>
+
+
+<h2 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h2><pre class=" language-sh"><code class="language-sh">yum install apr apr-util bash bzip2 curl krb5 libcurl libevent libxml2 libyaml zlib openldap openssh openssl openssl-libs perl readline rsync R sed tar zip
 </code></pre>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class=" language-bash"><code class="language-bash">$ hexo server
+<h2 id="准备基本环境"><a href="#准备基本环境" class="headerlink" title="准备基本环境"></a>准备基本环境</h2><p>1.关闭防火墙</p>
+<pre class=" language-shell"><code class="language-shell">#停止防火墙服务
+systemctl stop firewalld.service
+#禁止开机启动
+systemctl display firewalld.service
 </code></pre>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class=" language-bash"><code class="language-bash">$ hexo generate
+<p>2.添加系统配置，使用<code>vi /etc/sysctl.conf</code>命令编辑</p>
+<pre class=" language-shell"><code class="language-shell">net.ipv4.ip_forward = 0
+net.ipv4.conf.default.accept_source_route = 0
+kernel.sysrq = 1
+kernel.core_uses_pid = 1
+net.ipv4.tcp_syncookies = 1
+kernel.msgmnb = 65536
+kernel.msgmax = 65536
+kernel.sem = 250 64000 100 512
+kernel.shmmax = 810810728448 # kernel.shmmax = kernel.shmall * PAGE_SIZE 
+kernel.shmmni = 4096
+kernel.shmall = 197951838    #kernel.shmall = _PHYS_PAGES / 2 # See Shared Memory Pages
+net.ipv4.tcp_tw_recycle = 1
+net.ipv4.tcp_max_syn_backlog = 4096
+net.core.netdev_max_backlog = 10000
+vm.overcommit_memory = 2
+net.ipv4.conf.all.arp_filter = 1
 </code></pre>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class=" language-bash"><code class="language-bash">$ hexo deploy
+<p>官方配置</p>
+<pre><code>#官方配置：
+# kernel.shmall = _PHYS_PAGES / 2 # See Shared Memory Pages
+kernel.shmall = 197951838
+# kernel.shmmax = kernel.shmall * PAGE_SIZE 
+kernel.shmmax = 810810728448
+kernel.shmmni = 4096
+vm.overcommit_memory = 2 # See Segment Host Memory
+vm.overcommit_ratio = 95 # See Segment Host Memory
+net.ipv4.ip_local_port_range = 10000 65535 # See Port Settings
+kernel.sem = 500 2048000 200 4096
+kernel.sysrq = 1
+kernel.core_uses_pid = 1
+kernel.msgmnb = 65536
+kernel.msgmax = 65536
+kernel.msgmni = 2048
+net.ipv4.tcp_syncookies = 1
+net.ipv4.conf.default.accept_source_route = 0
+net.ipv4.tcp_max_syn_backlog = 4096
+net.ipv4.conf.all.arp_filter = 1
+net.core.netdev_max_backlog = 10000
+net.core.rmem_max = 2097152
+net.core.wmem_max = 2097152
+vm.swappiness = 10
+vm.zone_reclaim_mode = 0
+vm.dirty_expire_centisecs = 500
+vm.dirty_writeback_centisecs = 100
+vm.dirty_background_ratio = 0 # See System Memory
+vm.dirty_ratio = 0
+vm.dirty_background_bytes = 1610612736
+vm.dirty_bytes = 4294967296
 </code></pre>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<p>刷新配置</p>
+<pre><code>sysctl -p
+</code></pre>
+<p>3.系统资源限制配置，执行<code>vi /etc/security/limits.conf</code>命令添加以下内容</p>
+<pre><code>* soft nofile 65536
+* hard nofile 65536
+* soft nproc 131072
+* hard nproc 131072 
+</code></pre>
+<p>4.创建pgadmin用户</p>
+<pre><code>groupadd gpadmin
+useradd gpadmin -r -m -g gpadmin
+passwd #此处输入密码
+</code></pre>
+<p>5.配置免密登录（因为在安装时需要频繁输入密码）</p>
+<pre><code>su gpadmin
+cd  #进入用户home目录
+ssh-keygen -t rsa #生成密码，无需输入任何密码，连续回车即可
+cat .ssh/id_rsa.pub &gt;&gt; ~/.ssh/authorized_keys 
+#检查是否添加成功
+cat ~/.ssh/authorized_keys
+</code></pre>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><pre><code>#切换至root用户
+su root
+#切换到安装包所在目录（安装包上传位置）
+cd /opt
+#执行安装命令：
+yum install greenplum-db-6.19.2-rhel7-x86_64.rpm
+</code></pre>
+<h2 id="配置及数据库初始化"><a href="#配置及数据库初始化" class="headerlink" title="配置及数据库初始化"></a>配置及数据库初始化</h2><h3 id="创建目录"><a href="#创建目录" class="headerlink" title="创建目录"></a>创建目录</h3><p>1.对数据库安装目录执行用户权限设置：</p>
+<pre class=" language-shell"><code class="language-shell">chown -R gpadmin:gpadmin /usr/local/greenplum*
+</code></pre>
+<p>2.在当前bash环境下读取并执行数据库目录下的greenplum_path.sh文件：</p>
+<pre><code> source /usr/local/greenplum-db-6.19.2/greenplum_path.sh
+</code></pre>
+<p>3.创建数据库目录并对gpadmin进行授权：</p>
+<pre><code>#创建目录
+mkdir /data/&#123;gp1,gp2,master&#125;
+#目录授权
+chown -R gpadmin:gpadmin /data/&#123;gp1,gp2,master&#125;
+</code></pre>
+<h3 id="配置服务器地址"><a href="#配置服务器地址" class="headerlink" title="配置服务器地址"></a>配置服务器地址</h3><pre><code>mkdir  /home/gpadmin/gpconfigs
+cd /home/gpadmin/gpconfigs
+#创建文件配置文件,并输入本机ip
+echo &#39;192.168.x.x&#39;  &gt;&gt; hostfile_exkeys &amp;&amp; cat hostfile_exkeys
+echo &#39;192.168.x.x&#39;  &gt;&gt; hostfile_gpinitsystem &amp;&amp; cat hostfile_gpinitsystem
+#文件授权
+chown -R gpadmin:gpadmin /home/gpadmin/gpconfigs
+</code></pre>
+<h3 id="配置用户环境变量"><a href="#配置用户环境变量" class="headerlink" title="配置用户环境变量"></a>配置用户环境变量</h3><p>修改gpadmin用户的环境变量</p>
+<pre><code>#切换到gpadmin用户
+su  gpadmin
+cd 
+
+#编辑文件.bash_profile
+vi .bash_profile
+
+#添加以下内容
+source /usr/local/greenplum-db-6.13.0/greenplum_path.sh
+export MASTER_DATA_DIRECTORY=/data/master/gpseg-1
+MASTER_HOSTNAME=localhost
+export PGPORT=5432
+export PGUSER=gpadmin
+export PGDATABASE=hdw 
+
+#保存后刷新执行
+source /home/gpadmin/.bash_profile
+
+#继续编辑配置文件
+vi .bashrc
+source /usr/local/greenplum-db-6.19.2/greenplum_path.sh
+export MASTER_DATA_DIRECTORY=/data/master/gpseg-1
+export PGPORT=5432
+export PGUSER=gpadmin
+export PGDATABASE=hdw
+
+#保存后执行
+source /home/gpadmin/.bashrc
+
+#执行gpssh同步时间（单机部署好像没必要，没试过）
+gpssh-exkeys -f /home/gpadmin/gpconfigs/hostfile_exkeys
+</code></pre>
+<h3 id="数据库配置"><a href="#数据库配置" class="headerlink" title="数据库配置"></a>数据库配置</h3><p>复制数据库配置文件</p>
+<pre><code>#拷贝文件
+cp /usr/local/greenplum-db-6.19.2/docs/cli_help/gpconfigs/gpinitsystem_config  /home/gpadmin/gpconfigs
+</code></pre>
+<p>修改参数</p>
+<pre><code>vi /home/gpadmin/gpconfigs/gpinitsystem_config
+
+#配置数据目录
+PORT_BASE=6500
+declare -a DATA_DIRECTORY=(/data/gp1 /data/gp2)
+#配置主机名称
+MASTER_HOSTNAME=localhost
+#配置数据库名称
+DATABASE_NAME=hdw
+#配置集群列表
+MACHINE_LIST_FILE=/home/gpadmin/gpconfigs/hostfile_gpinitsystem
+</code></pre>
+<h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><pre><code>#初始化数据库
+gpinitsystem -c /home/gpadmin/gpconfigs/gpinitsystem_config
+
+#命令中间会有个确认，输入Y就行
+Continue with Greenplum creation Yy/Nn&gt;   Y
+</code></pre>
+<blockquote>
+<p>如果还有其他的yes/no的提示，选择yes，如果提示输入密码，那就是你的ssh免密登录配置失败，就直接输入密码（会输入很多次），如果嫌弃繁琐，那就重新配置一下上面的免密登录。</p>
+<p>初始化结束以后，数据库就在5432端口启动了，大功告成。</p>
+</blockquote>
+<h3 id="配置远程登录数据库"><a href="#配置远程登录数据库" class="headerlink" title="配置远程登录数据库"></a>配置远程登录数据库</h3><pre><code>#此处使用root用户进行编辑
+su root
+vi /data/master/gpseg-1/pg_hba.conf
+
+#输入以下内容
+host    all    all     0.0.0.0/0    md5
+#注：最后一个如果是md5，表示密码登录，trust 表示免密登录
+#配置完成后可以navcat连接greenplum数据库，或者其他连接工具，连接方法不再详情描述
+
+#本机登录
+psql  -h 127.0.0.1 -p 5432 -U gpadmin
+#列出所有数据库
+hdw=# \l
+#退出
+hdw=# \q
+</code></pre>
 
                 
             </div>
@@ -454,7 +691,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://josian7.github.io/2022/06/02/hello-world/">https://josian7.github.io/2022/06/02/hello-world/</a>
+                    <a href="https://josian7.github.io/2022/08/11/greenplum/">https://josian7.github.io/2022/08/11/greenplum/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -491,7 +728,19 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/database/">
+                                    <span class="chip bg-color">database</span>
+                                </a>
+                            
+                                <a href="/tags/greenplum/">
+                                    <span class="chip bg-color">greenplum</span>
+                                </a>
+                            
+                                <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                                    <span class="chip bg-color">数据库</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -663,66 +912,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2022/08/03/emqtt-bench/">
+                <a href="/2022/08/11/greenplum/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="emqtt-bench 工具">
+                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="Greenplum 数据库单机部署">
                         
-                        <span class="card-title">emqtt-bench 工具</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            emqtt_bench 是基于 Erlang 编写的，一个简洁强大的 MQTT 协议性能测试工具。
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-08-03
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/emqx/" class="post-category">
-                                    emqx
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/emqx/">
-                        <span class="chip bg-color">emqx</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
-            </div>
-            <div class="card">
-                <a href="/2022/06/02/hello-world/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Hello World">
-                        
-                        <span class="card-title">Hello World</span>
+                        <span class="card-title">Greenplum 数据库单机部署</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -733,7 +934,65 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-06-02
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-08-11
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/greenplum/" class="post-category">
+                                    greenplum
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/database/">
+                        <span class="chip bg-color">database</span>
+                    </a>
+                    
+                    <a href="/tags/greenplum/">
+                        <span class="chip bg-color">greenplum</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                        <span class="chip bg-color">数据库</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2022/08/05/git/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
+                        
+                        <span class="card-title"></span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-08-05
                             </span>
                         <span class="publish-author">
                             
@@ -743,7 +1002,6 @@
                         </span>
                     </div>
                 </div>
-
                 
             </div>
         </div>

@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Hello World, Josian">
-    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex">
+    <meta name="keywords" content="emqtt-bench 工具, Josian">
+    <meta name="description" content="emqtt_bench 是基于 Erlang 编写的，一个简洁强大的 MQTT 协议性能测试工具。">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -19,7 +19,7 @@
 
     
 
-    <title>Hello World | Josian</title>
+    <title>emqtt-bench 工具 | Josian</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -246,12 +246,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Hello World</h1>
+                    <h1 class="description center-align post-title">emqtt-bench 工具</h1>
                 </div>
             </div>
         </div>
@@ -365,12 +365,25 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/emqx/">
+                                <span class="chip bg-color">emqx</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/emqx/" class="post-category">
+                                emqx
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -379,7 +392,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-06-02
+                    2022-08-03
                 </div>
                 
 
@@ -388,14 +401,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    73
+                    560
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    2 分
                 </div>
                 
 
@@ -415,19 +428,191 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class=" language-bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span>
+                <h2 id="emqtt-bench安装"><a href="#emqtt-bench安装" class="headerlink" title="emqtt-bench安装"></a>emqtt-bench安装</h2><p>安装环境：Centos7</p>
+<p>安装包：<a target="_blank" rel="noopener" href="https://github.com/emqx/emqtt-bench/releases/download/0.4.6-alpha.2/emqtt-bench-0.4.6-alpha.2-centos7-amd64.tar.gz">emqtt-bench-0.4.6-alpha.2-centos7-amd64.tar.gz</a></p>
+<p>建议使用已编译好的发行包进行安装，源码编译已踩坑。</p>
+<pre class=" language-sh"><code class="language-sh"># 创建存放目录并解压
+[root@testHost]# mkdir /usr/local/emqtt-bench/
+[root@testHost]# tar -zxvf emqtt-bench-0.4.6-alpha.2-centos7-amd64.tar.gz \
+                 -C /usr/local/emqtt-bench/
+# 添加环境变量
+[root@testHost]# echo 'export PATH=$PATH:/usr/local/emqtt-bench/bin' >> /etc/profile
+[root@testHost]# source /etc/profile
 </code></pre>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class=" language-bash"><code class="language-bash">$ hexo server
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p><code>emqtt_bench</code> 共三个子命令：</p>
+<ol>
+<li><p><code>pub</code>：用于创建大量客户端执行发布消息的操作。</p>
+</li>
+<li><p><code>sub</code>：用于创建大量客户端执行订阅主题，并接受消息的操作。</p>
+</li>
+<li><p><code>conn</code>：用于创建大量的连接。</p>
+</li>
+</ol>
+<p>执行 <code>emqtt_bench pub --help</code> 会得到可用的参数输出</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>简写</th>
+<th>可选值</th>
+<th>默认值</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>–host</td>
+<td>-h</td>
+<td>-</td>
+<td>localhost</td>
+<td align="left">要连接的 MQTT 服务器地址</td>
+</tr>
+<tr>
+<td>–port</td>
+<td>-p</td>
+<td>-</td>
+<td>1883</td>
+<td align="left">MQTT 服务端口</td>
+</tr>
+<tr>
+<td>–version</td>
+<td>-V</td>
+<td>3 4 5</td>
+<td>5</td>
+<td align="left">使用的 MQTT 协议版本</td>
+</tr>
+<tr>
+<td>–count</td>
+<td>-c</td>
+<td>-</td>
+<td>200</td>
+<td align="left">客户端总数</td>
+</tr>
+<tr>
+<td>–startnumber</td>
+<td>-n</td>
+<td>-</td>
+<td>0</td>
+<td align="left">客户端数量起始值</td>
+</tr>
+<tr>
+<td>–interval</td>
+<td>-i</td>
+<td>-</td>
+<td>10</td>
+<td align="left">每间隔多少时间创建一个客户端；单位：毫秒</td>
+</tr>
+<tr>
+<td>–interval_of_msg</td>
+<td>-I</td>
+<td>-</td>
+<td>1000</td>
+<td align="left">每间隔多少时间发送一个消息</td>
+</tr>
+<tr>
+<td>–username</td>
+<td>-u</td>
+<td>-</td>
+<td>无；非必选</td>
+<td align="left">客户端用户名</td>
+</tr>
+<tr>
+<td>–password</td>
+<td>-P</td>
+<td>-</td>
+<td>无；非必选</td>
+<td align="left">客户端密码</td>
+</tr>
+<tr>
+<td>–topic</td>
+<td>-t</td>
+<td>-</td>
+<td>无；必选</td>
+<td align="left">发布的主题；支持站位符： <code>%c</code>：表示 ClientId <code>%u</code>：表示 Username <code>%i</code>：表示客户端的序列数</td>
+</tr>
+<tr>
+<td>–szie</td>
+<td>-s</td>
+<td>-</td>
+<td>256</td>
+<td align="left">消息 Payload 的大小；单位：字节</td>
+</tr>
+<tr>
+<td>–qos</td>
+<td>-q</td>
+<td>-</td>
+<td>0</td>
+<td align="left">Qos 等级</td>
+</tr>
+<tr>
+<td>–retain</td>
+<td>-r</td>
+<td>true false</td>
+<td>false</td>
+<td align="left">消息是否设置 Retain 标志</td>
+</tr>
+<tr>
+<td>–keepalive</td>
+<td>-k</td>
+<td>-</td>
+<td>300</td>
+<td align="left">客户端心跳时间</td>
+</tr>
+<tr>
+<td>–clean</td>
+<td>-C</td>
+<td>true false</td>
+<td>true</td>
+<td align="left">是否以清除会话的方式建立连接</td>
+</tr>
+<tr>
+<td>–ssl</td>
+<td>-S</td>
+<td>true false</td>
+<td>false</td>
+<td align="left">是否启用 SSL</td>
+</tr>
+<tr>
+<td>–certfile</td>
+<td>-</td>
+<td>-</td>
+<td>无</td>
+<td align="left">客户端 SSL 证书</td>
+</tr>
+<tr>
+<td>–keyfile</td>
+<td>-</td>
+<td>-</td>
+<td>无</td>
+<td align="left">客户端 SSL 秘钥文件</td>
+</tr>
+<tr>
+<td>–ws</td>
+<td>-</td>
+<td>true false</td>
+<td>false</td>
+<td align="left">是否以 Websocket 的方式建立连接</td>
+</tr>
+<tr>
+<td>–ifaddr</td>
+<td>-</td>
+<td>-</td>
+<td>无</td>
+<td align="left">指定客户端连接使用的本地网卡</td>
+</tr>
+</tbody></table>
+<br/>
+
+<p>例如，启动 10 个连接，分别每秒向主题 <code>t</code> 发送 100 条 Qos0 消息，其中每个消息体的大小为 <code>16</code> 字节大小：</p>
+<pre class=" language-sh"><code class="language-sh">emqtt_bench pub   -t t -h 192.168.0.1 -p 1883 -s 16 -q 0 -c 10 -I 10 \
+--username admin --password 123
 </code></pre>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class=" language-bash"><code class="language-bash">$ hexo generate
-</code></pre>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class=" language-bash"><code class="language-bash">$ hexo deploy
-</code></pre>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<br/>
+
+<p>使用方法参考emqx官方文档：<a target="_blank" rel="noopener" href="https://docs.emqx.com/zh/enterprise/v4.4/tutorial/benchmark.html">https://docs.emqx.com/zh/enterprise/v4.4/tutorial/benchmark.html</a></p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://github.com/emqx/emqtt-bench/releases">emqtt-bench 发行包下载</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/emqx/emqtt-bench">emqtt-bench 源码地址</a></p>
+</blockquote>
 
                 
             </div>
@@ -454,7 +639,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://josian7.github.io/2022/06/02/hello-world/">https://josian7.github.io/2022/06/02/hello-world/</a>
+                    <a href="https://josian7.github.io/2022/08/03/emqtt-bench/">https://josian7.github.io/2022/08/03/emqtt-bench/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -491,7 +676,11 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/emqx/">
+                                    <span class="chip bg-color">emqx</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -667,44 +856,32 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2022/08/03/emqtt-bench/">
+                <a href="/2022/08/05/linux-systemsettings/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="emqtt-bench 工具">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
                         
-                        <span class="card-title">emqtt-bench 工具</span>
+                        <span class="card-title"></span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            emqtt_bench 是基于 Erlang 编写的，一个简洁强大的 MQTT 协议性能测试工具。
+                            
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-08-03
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-08-05
                         </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/emqx/" class="post-category">
-                                    emqx
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            Josian
                             
                         </span>
                     </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/emqx/">
-                        <span class="chip bg-color">emqx</span>
-                    </a>
-                    
                 </div>
                 
             </div>
@@ -713,7 +890,7 @@
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
                 <a href="/2022/06/02/hello-world/">
@@ -743,7 +920,6 @@
                         </span>
                     </div>
                 </div>
-
                 
             </div>
         </div>
